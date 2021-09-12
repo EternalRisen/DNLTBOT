@@ -4,6 +4,9 @@
   "description": "Discord Bot for DNLT",
   "main": "bot",
   "scripts": {
+    "build": "node build",
+    "rebuild": "rm -rf dist && node build",
+    "start": "node bot",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [

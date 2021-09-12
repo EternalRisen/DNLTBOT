@@ -1,17 +1,13 @@
 /** ping command uwu */
 
 import Discord = require('discord.js');
-import { Command, Alias } from '../commands';
+import { Command } from '../commands';
 import { client } from '../common';
-
-export const alias: Alias = {
-    ping: ['p']
-};
 
 export class Ping extends Command {
     constructor(message: Discord.Message) {
         super(message);
-        //this.aliases = alias.ping;
+        this.aliases = ['p'];
     }
 
     async execute(): Promise<void | Discord.Message> {

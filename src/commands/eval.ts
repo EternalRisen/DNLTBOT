@@ -2,18 +2,14 @@
 
 import Discord = require('discord.js');
 // unused vars are to eval the variables
-import { Command, Alias, commands, cmdlock } from '../commands';
+import { Command, commands, cmdlock } from '../commands';
 import { client, prefix } from '../common';
 import { inspect } from 'util';
-
-export const alias: Alias = {
-    eval: ['e']
-}
 
 export class Eval extends Command {
     constructor(message: Discord.Message) {
         super(message);
-        //this.aliases = alias.eval;
+        this.aliases = ['e'];
     }
 
     async execute(): Promise<void | Discord.Message> {

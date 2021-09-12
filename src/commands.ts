@@ -11,12 +11,8 @@ export interface Constructable<T> {
     help(): string;
 }
 
-export interface Alias {
-    [key: string]: string[];
-}
-
 export interface CMD {
-    [key: string]: Constructable<Command> | Alias;
+    [key: string]: Constructable<Command>;
 }
 
 export abstract class Command {
@@ -94,7 +90,6 @@ export abstract class Command {
     }
 
     protected sendCode(msg: string, channel?: Channel): Promise<Discord.Message> | void {
-        console.log('test');
 		if (msg === '') return;
 		if (!channel) channel = this.channel;
         
@@ -127,15 +122,18 @@ export function loadcommands() {
             const mod = cmdmod[cmd];
             if (typeof mod === 'function') {
                 commands.set(toID(cmd), mod);
-            } /* else {
-                /** alias? *\/
-                for (const key in cmdmod) {
-                    const aliases = cmdmod[key];
-                    for (const alias of /** bully typescript *\/(aliases as any)) {
-                        commands.set(toID(alias), key)
-                    }
+                // set aliases as well
+                // spoof message thingy for the command class
+                const message = {
+                    content: "hi"
                 }
-            } */
+
+                let cmds: any = commands.get(toID(cmd))
+                cmds = new (cmds)(message);
+                for (const alias of cmds.aliases) {
+                    commands.set(toID(alias), mod);
+                }
+            }
         }
     }
     cmdlock = false;

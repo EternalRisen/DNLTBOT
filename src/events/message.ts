@@ -1,7 +1,7 @@
 /** message event */
 
-import { client, prefix, toID } from '../common';
-import { cmdlock, commands, Constructable, Command, loadcommands } from '../commands';
+import { client, prefix, toID } from '../lib/common';
+import { cmdlock, commands, Constructable, Command, loadcommands } from '../lib/commands';
 
 client.on('messageCreate', (m: any) => void (async msg => {
     /** do nothing if bot */

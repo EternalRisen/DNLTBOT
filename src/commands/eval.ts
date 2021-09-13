@@ -2,8 +2,8 @@
 
 import Discord = require('discord.js');
 // unused vars are to eval the variables
-import { Command, commands, cmdlock } from '../commands';
-import { client, prefix } from '../common';
+import { Command, commands, cmdlock } from '../lib/commands';
+import { client, prefix } from '../lib/common';
 import { inspect } from 'util';
 
 export class Eval extends Command {
@@ -13,7 +13,7 @@ export class Eval extends Command {
     }
 
     async execute(): Promise<void | Discord.Message> {
-        /** try {
+        try {
             this.args.replace('```js', '');
         } catch {
             // do nothing
@@ -23,7 +23,7 @@ export class Eval extends Command {
             this.args.replace('```', '');
         } catch {
             // do nothing
-        } */
+        }
 
         // for the sake of hopefully being able to eval the variables
         const bot = client;

@@ -1,4 +1,4 @@
-import { client } from './common';
+import { client } from './lib/common';
 import fs = require('fs');
 
 /** get events going */

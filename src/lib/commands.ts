@@ -58,6 +58,13 @@ export abstract class Command {
         return 'no help provided for this command'
     }
 
+    /**
+     * 
+     * @param permission the permisson you are going to require
+     * @param user the user you are checking the permission for, defaults to the author of the message
+     * @param guild the guild in which you are searching for, defaults to the guild the message was sent in
+     * @returns boolean
+     */
     protected async can(permission: string, user?: Discord.User, guild?: Discord.Guild) {
         if (!user) user = this.author;
         if (!guild && this.guild) guild = this.guild;
@@ -89,6 +96,12 @@ export abstract class Command {
         return member.permissions.has((permission as Discord.PermissionResolvable));
     }
 
+    /**
+     * 
+     * @param msg the message you want to send
+     * @param channel the channel you wish so send this to
+     * @returns sending the message in a code format
+     */
     protected sendCode(msg: string, channel?: Channel): Promise<Discord.Message> | void {
 		if (msg === '') return;
 		if (!channel) channel = this.channel;

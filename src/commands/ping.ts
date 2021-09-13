@@ -1,8 +1,8 @@
 /** ping command uwu */
 
 import Discord = require('discord.js');
-import { Command } from '../commands';
-import { client } from '../common';
+import { Command } from '../lib/commands';
+import { client } from '../lib/common';
 
 export class Ping extends Command {
     constructor(message: Discord.Message) {

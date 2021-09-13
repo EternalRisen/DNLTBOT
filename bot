@@ -5,4 +5,4 @@ if (!process.env.TOKEN) {
     console.log('token not found, try seeing if it may be in the .env or if it\'s not loaded properly');
 }
 
-require('./dist/client.js');
+require('./dist/index.js');

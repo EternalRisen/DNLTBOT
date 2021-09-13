@@ -1,7 +1,7 @@
 /** ready event */
 
-import { client } from '../common';
-import { loadcommands } from '../commands';
+import { client } from '../lib/common';
+import { loadcommands } from '../lib/commands';
 
 client.on('ready', (c: any) => {
     loadcommands();
